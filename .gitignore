@@ -1,0 +1,10 @@
+.idea/
+dist/
+zipped/
+node_modules/
+src/vendor/
+src/includes/vendor/
+src/composer.lock
+composer.lock
+package-lock.json
+/vendor/
