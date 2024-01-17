@@ -19,59 +19,6 @@ use /**
  * Represents the administrative settings for the AIDFW Plugin.
  */
 	AIDFW_Plugin\Admin\Admin_Settings;
-use /**
- * Class Purge
- *
- * This class handles the purging of data within the AIDFW Plugin.
- */
-	AIDFW_Plugin\Business\Purge;
-use /**
- * Class Core\Process_Spam_Checks
- *
- * The Process_Spam_Checks class is responsible for processing spam checks on user-submitted data.
- * It performs various checks to determine if the data is likely to be spam or not.
- *
- * @package AIDFW_Plugin\Core
- */
-	AIDFW_Plugin\Core\Process_Spam_Checks;
-use /**
- * Class Utilities
- *
- * This class provides utility methods for the plugin.
- */
-	AIDFW_Plugin\Core\Utilities;
-use /**
- * Class Log
- *
- * The Log class is responsible for handling the logging of messages to a file.
- *
- * @package AIDFW_Plugin\Data
- */
-	AIDFW_Plugin\Data\Log;
-use /**
- * Namespace AIDFW_Plugin\FrontEnd
- *
- * This namespace contains classes related to the front-end functionality of the plugin.
- */
-	AIDFW_Plugin\FrontEnd\FrontEnd;
-use /**
- * Class Email_Reports
- *
- * This class is responsible for generating and sending reports via email.
- *
- * @package AIDFW_Plugin\Business
- */
-	AIDFW_Plugin\Business\Email_Reports;
-use /**
- * A class for marking comments as spam in the admin area.
- *
- * This class provides functionality to mark comments as spam in the WordPress admin area.
- * It utilizes the WordPress comment functions to update the comment status.
- *
- * @package AIDFW_Plugin
- * @subpackage Admin
- */
-	AIDFW_Plugin\Admin\Mark_Spam;
 
 /**
  * Core class

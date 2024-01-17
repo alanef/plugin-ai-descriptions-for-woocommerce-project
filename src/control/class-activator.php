@@ -25,8 +25,6 @@
 
 namespace AIDFW_Plugin\Control;
 
-use AIDFW_Plugin\Core\Utilities;
-
 /**
  * Class Activator
  * @package AIDFW_Plugin\Control

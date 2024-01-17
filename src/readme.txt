@@ -13,6 +13,8 @@ This works with the WooCommerce plugin. It will generate a description for your 
 
 Just input a title and save the product. The description will be generated and saved if the existing description is empty.
 
+The plugin is free but you will need an OpenAI API key. You can get one for free from [OpenAI](https://platform.openai.com) however Open AI will charge you for the API usage beyond their free tier. You can see the pricing [here](https://openai.com/pricing/).
+
 == Installation ==
 
 **Through Dashboard**
