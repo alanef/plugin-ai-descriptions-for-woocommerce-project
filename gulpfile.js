@@ -23,16 +23,16 @@ gulp.task('zip', (done) => {
 gulp.task('clean', () => {
     return del([
         'dist/composer.*',
-        'dist/includes/vendor/bin/',
-        'dist/includes/vendor/composer/ca-bundle/',
-        'dist/includes/vendor/composer/installers/',
-        'dist/includes/vendor/**/.git*',
-        'dist/includes/vendor/**/.travis.yml',
-        'dist/includes/vendor/**/.codeclimate.yml',
-        'dist/includes/vendor/**/composer.json',
-        'dist/includes/vendor/**/package.json',
-        'dist/includes/vendor/**/gulpfile.js',
-        'dist/includes/vendor/**/*.md',
+        'dist/vendor/bin/',
+        'dist/vendor/composer/ca-bundle/',
+        'dist/vendor/composer/installers/',
+        'dist/vendor/**/.git*',
+        'dist/vendor/**/.travis.yml',
+        'dist/vendor/**/.codeclimate.yml',
+        'dist/ivendor/**/composer.json',
+        'dist/vendor/**/package.json',
+        'dist/vendor/**/gulpfile.js',
+        'dist/vendor/**/*.md',
     ]);
 });
 

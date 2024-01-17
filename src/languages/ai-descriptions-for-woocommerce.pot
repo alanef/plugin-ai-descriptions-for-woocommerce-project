@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-17 11:17+0000\n"
+"POT-Creation-Date: 2024-01-17 12:21+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -18,51 +18,51 @@ msgstr ""
 msgid "Cannot execute as the plugin already exists, if you have a another version installed deactivate that and try again"
 msgstr ""
 
-#: src/admin/class-admin-pages.php:58
-msgid "Anti Spam"
+#: src/admin/class-admin-pages.php:57
+msgid "AI Descriptions for Woo"
 msgstr ""
 
-#: src/admin/class-admin-pages.php:117
+#: src/admin/class-admin-pages.php:116
 msgid "Are you sure want to do this?"
 msgstr ""
 
-#: src/admin/class-admin-pages.php:210
+#: src/admin/class-admin-pages.php:209
 msgid "Save Options"
 msgstr ""
 
-#: src/admin/class-admin-pages.php:235
+#: src/admin/class-admin-pages.php:234
 msgid "Reset Settings"
 msgstr ""
 
-#: src/admin/class-admin-pages.php:240
+#: src/admin/class-admin-pages.php:239
 msgid "Save"
 msgstr ""
 
-#: src/admin/class-admin-settings.php:55
+#: src/admin/class-admin-settings.php:48
 msgid "OpenAI API Key"
 msgstr ""
 
-#: src/admin/class-admin-settings.php:56
+#: src/admin/class-admin-settings.php:49
 msgid "Get the API key from Open AI"
 msgstr ""
 
-#: src/admin/class-admin-settings.php:63, src/admin/class-admin-settings.php:111, src/admin/class-admin-settings.php:115, src/admin/class-admin-settings.php:116, src/admin/class-admin-settings.php:152
+#: src/admin/class-admin-settings.php:56, src/admin/class-admin-settings.php:103, src/admin/class-admin-settings.php:107, src/admin/class-admin-settings.php:108, src/admin/class-admin-settings.php:144
 msgid "Settings"
 msgstr ""
 
-#: src/admin/class-admin-settings.php:135
+#: src/admin/class-admin-settings.php:127
 msgid "Settings reset to defaults."
 msgstr ""
 
-#: src/admin/class-admin-settings.php:190
+#: src/admin/class-admin-settings.php:182
 msgid "Nonce verification failed."
 msgstr ""
 
-#: src/admin/class-admin-settings.php:221
+#: src/admin/class-admin-settings.php:213
 msgid "Get your OpenAI API key "
 msgstr ""
 
-#: src/admin/class-admin-settings.php:223
+#: src/admin/class-admin-settings.php:215
 msgid "from OpenAI here (opens in new tab)"
 msgstr ""
 

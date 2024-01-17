@@ -3,6 +3,7 @@ Contributors: Fullworks
 Tags: woocommerce, openai
 Tested up to: 6.4
 Stable tag: 1.0.0
+License: GPL-3.0+
 
 Open AI description generator for WooCommerce
 

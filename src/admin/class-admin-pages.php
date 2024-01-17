@@ -53,9 +53,8 @@ class Admin_Pages {
 	}
 
 	public function settings_setup() {
-		// @TODO called multiple times - thing maybe singleton
 
-		$title = esc_html__( 'Anti Spam', 'ai-descriptions-for-woocommerce' );
+		$title = esc_html__( 'AI Descriptions for Woo', 'ai-descriptions-for-woocommerce' );
 
 		/* Add settings menu page */
 		add_submenu_page(
