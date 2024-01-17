@@ -1,7 +1,7 @@
 <?php
 /**
- * @copyright (c) 2019.
- * @author            Alan Fuller (support@fullworks)
+ * @copyright (c) 2024.
+ * @author            Alan Fuller (support@fullworksplugins.com)
  * @licence           GPL V3 https://www.gnu.org/licenses/gpl-3.0.en.html
  * @link                  https://fullworks.net
  *
@@ -23,14 +23,14 @@
  *
  */
 
-namespace AI_Descriptions_For_WooComerce\Admin;
+namespace AIDFW_Plugin\Admin;
 
-use AI_Descriptions_For_WooComerce\Core\Utilities;
+use AIDFW_Plugin\Core\Utilities;
 
 
 /**
  * Class Settings
- * @package AI_Descriptions_For_WooComerce\Admin
+ * @package AIDFW_Plugin\Admin
  */
 class Admin_Pages {
 
@@ -229,8 +229,8 @@ class Admin_Pages {
 				<?php wp_nonce_field( 'fwas_submit_meta_box', '_aidwc_submit_meta_box_nonce' ); ?>
 
                 <div id="delete-action">
-                    <input type="submit" name="<?php echo esc_attr("{$this->option_group}-reset"); ?>"
-                           id="<?php echo esc_attr("{$this->option_group}-reset"); ?>"
+                    <input type="submit" name="<?php echo esc_attr( "{$this->option_group}-reset" ); ?>"
+                           id="<?php echo esc_attr( "{$this->option_group}-reset" ); ?>"
                            class="button"
                            value="<?php esc_html_e( 'Reset Settings', 'ai-descriptions-for-woocommerce' ); ?>">
                 </div><!-- #delete-action -->
@@ -259,8 +259,9 @@ class Admin_Pages {
 	}
 
 	public function display_tabs() {
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No action, nonce is not required
-		$split     = explode( "-", sanitize_text_field($_GET['page'] ));
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No action, nonce is not required
+		$page      = sanitize_text_field( wp_unslash( $_GET['page'] ?? '' ) );
+		$split     = explode( '-', $page );
 		$page_type = $split[ count( $split ) - 1 ];
 		$tabs      = Utilities::get_instance()->get_settings_page_tabs( $page_type );
 		if ( count( $tabs ) < 1 ) {
@@ -268,10 +269,11 @@ class Admin_Pages {
 		}
 		?>
         <h2 class="nav-tab-wrapper">
-			<?php foreach ( $tabs as $key => $tab ) {
+			<?php
+			foreach ( $tabs as $tab ) {
 				$active = '';
-				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No action, nonce is not required
-				if ( preg_match( '#' . sanitize_text_field($_GET['page']). '$#', $tab['href'] ) ) {
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No action, nonce is not required these are tabs within admin settings
+				if ( preg_match( '#' . $page . '$#', $tab['href'] ) ) {
 					$active = ' nav-tab-active';
 				}
 				echo '<a href="' . esc_url( $tab['href'] ) . '" class="nav-tab' . esc_attr( $active ) . '">' . esc_html( $tab['title'] ) . '</a>';

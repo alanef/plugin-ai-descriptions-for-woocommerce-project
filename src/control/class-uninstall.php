@@ -1,7 +1,7 @@
 <?php
 /**
- * @copyright (c) 2019.
- * @author            Alan Fuller (support@fullworks)
+ * @copyright (c) 2024.
+ * @author            Alan Fuller (support@fullworksplugins.com)
  * @licence           GPL V3 https://www.gnu.org/licenses/gpl-3.0.en.html
  * @link                  https://fullworks.net
  *
@@ -23,11 +23,11 @@
  *
  */
 
-namespace AI_Descriptions_For_WooComerce\Control;
+namespace AIDFW_Plugin\Control;
 
 /**
  * Class Uninstall
- * @package AI_Descriptions_For_WooComerce\Control
+ * @package AIDFW_Plugin\Control
  */
 class Uninstall {
 

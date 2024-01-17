@@ -1,9 +1,8 @@
 === AI description for woocommerce ===
 Contributors: Fullworks
 Tags: woocommerce, openai
-Tested up to: 6.1
+Tested up to: 6.4
 Stable tag: 1.0.0
-Type: freemium
 
 Open AI description generator for WooCommerce
 
@@ -40,9 +39,9 @@ Just input a title and save the product. The description will be generated and s
 Because you are lazy? Or have writers block? Or just want to see what the AI can do?
 
 
-== PHP 8.1 ==
+== PHP 8.2 ==
 
-Tested against PHP 8.1
+Tested against PHP 8.2
 
 == Changelog ==
 = 1.0.0 =

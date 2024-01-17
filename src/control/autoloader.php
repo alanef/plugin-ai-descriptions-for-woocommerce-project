@@ -1,7 +1,7 @@
 <?php
 /**
- * @copyright (c) 2019.
- * @author            Alan Fuller (support@fullworks)
+ * @copyright (c) 2024.
+ * @author            Alan Fuller (support@fullworksplugins.com)
  * @licence           GPL V3 https://www.gnu.org/licenses/gpl-3.0.en.html
  * @link                  https://fullworks.net
  *
@@ -28,13 +28,13 @@
  * Tom McFarlin https://tommcfarlin.com/  Licensed    GPL-2.0+
  */
 
-spl_autoload_register( 'fullworks_AI_Descriptions_For_WooComerce_autoload' );
+spl_autoload_register( 'aidfw_plugin_autoload' );
 
-function fullworks_AI_Descriptions_For_WooComerce_autoload( $class_name ) {
+function aidfw_plugin_autoload( $class_name ) {
 
 
 	// If the specified $class_name does not include our namespace, duck out.
-	if ( false === strpos( $class_name, 'AI_Descriptions_For_WooComerce' ) ) {
+	if ( false === strpos( $class_name, 'AIDFW_Plugin' ) ) {
 		return;
 	}
 
@@ -79,9 +79,9 @@ function fullworks_AI_Descriptions_For_WooComerce_autoload( $class_name ) {
 
 	// If the file exists in the specified path, then include it.
 	if ( file_exists( $filepath ) ) {
-		include_once( $filepath );
+		include_once $filepath;
 	} else {
 		/* translators: %1$s: full path of missing file */
-		wp_die( sprintf( esc_html__( 'The system file attempting to be loaded at %1$s does not exist.', 'ai-descriptions-for-woocommerce' ), esc_html($filepath ) ) );
+		wp_die( sprintf( esc_html__( 'The system file attempting to be loaded at %1$s does not exist.', 'ai-descriptions-for-woocommerce' ), esc_html( $filepath ) ) );
 	}
 }

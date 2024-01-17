@@ -1,7 +1,7 @@
 <?php
 /**
- * @copyright (c) 2019.
- * @author            Alan Fuller (support@fullworks)
+ * @copyright (c) 2024.
+ * @author            Alan Fuller (support@fullworksplugins.com)
  * @licence           GPL V3 https://www.gnu.org/licenses/gpl-3.0.en.html
  * @link                  https://fullworks.net
  *
@@ -24,9 +24,9 @@
  */
 
 
-namespace AI_Descriptions_For_WooComerce\Admin;
+namespace AIDFW_Plugin\Admin;
 
-use AI_Descriptions_For_WooComerce\Core\Utilities;
+use AIDFW_Plugin\Core\Utilities;
 
 class Admin_Settings extends Admin_Pages {
 
@@ -44,7 +44,6 @@ class Admin_Settings extends Admin_Pages {
 	 *
 	 * @param string $plugin_name
 	 * @param string $version plugin version.
-
 	 */
 
 	public function __construct( $plugin_name, $version, $utilities ) {
@@ -81,7 +80,7 @@ class Admin_Settings extends Admin_Pages {
 
 	public function plugin_action_links() {
 		add_filter(
-			'plugin_action_links_' . AI_DESCRIPTIONS_FOR_WOOCOMMERCE_PLUGIN_BASENAME,
+			'plugin_action_links_' . AIDFW_PLUGIN_BASENAME,
 			array(
 				$this,
 				'add_plugin_action_links',
@@ -158,8 +157,6 @@ class Admin_Settings extends Admin_Pages {
 			null,
 			false
 		);
-
-
 	}
 
 	private function add_meta_box( $id, $title, $callback, $screen = null, $context = 'advanced', $priority = 'default', $callback_args = null, $closed = true ) {
@@ -185,13 +182,11 @@ class Admin_Settings extends Admin_Pages {
 				);
 			}
 		}
-
 	}
-
 
 	public function sanitize_settings( $settings ) {
 		if ( isset( $_REQUEST['ai-descriptions-for-woocommerce-reset'] ) ) {
-			if ( ! isset( $_REQUEST['_aidwc_submit_meta_box_nonce'] ) || ! wp_verify_nonce( $_REQUEST['_aidwc_submit_meta_box_nonce'], 'fwas_submit_meta_box' ) ) {
+			if ( ! isset( $_REQUEST['_aidwc_submit_meta_box_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_REQUEST['_aidwc_submit_meta_box_nonce'] ) ), 'fwas_submit_meta_box' ) ) {
 				wp_die( esc_html__( 'Nonce verification failed.', 'ai-descriptions-for-woocommerce' ) );
 			}
 
@@ -223,7 +218,10 @@ class Admin_Settings extends Admin_Pages {
                                                                                         id="ai-descriptions-for-woocommerce[openai_api_key]"
                                                                                         value="<?php echo esc_attr( $this->get_option( 'openai_api_key' ) ); ?>"
                         >
-						<?php esc_html_e( 'Get your OpenAI API key from OpenAI', 'ai-descriptions-for-woocommerce' ); ?>
+						<?php esc_html_e( 'Get your OpenAI API key ', 'ai-descriptions-for-woocommerce' ); ?>
+                        <a href="https://platform.openai.com/api-keys/" target="_blank" >
+                        <?php esc_html_e( 'from OpenAI here (opens in new tab)', 'ai-descriptions-for-woocommerce' ); ?>
+                        <span class="dashicons dashicons-external"></span></a>
                     </label>
                 </td>
 				<?php $this->display_tip( 'API Key' ); ?>

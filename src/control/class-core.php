@@ -1,7 +1,7 @@
 <?php
 /**
- * @copyright (c) 2019.
- * @author            Alan Fuller (support@fullworks)
+ * @copyright (c) 2024.
+ * @author            Alan Fuller (support@fullworksplugins.com)
  * @licence           GPL V3 https://www.gnu.org/licenses/gpl-3.0.en.html
  * @link                  https://fullworks.net
  *
@@ -23,21 +23,21 @@
  *
  */
 
-namespace AI_Descriptions_For_WooComerce\Control;
+namespace AIDFW_Plugin\Control;
 
-use AI_Descriptions_For_WooComerce\Admin\Admin;
-use AI_Descriptions_For_WooComerce\Admin\Admin_Settings;
-use AI_Descriptions_For_WooComerce\Business\Purge;
-use AI_Descriptions_For_WooComerce\Core\Process_Spam_Checks;
-use AI_Descriptions_For_WooComerce\Core\Utilities;
-use AI_Descriptions_For_WooComerce\Data\Log;
-use AI_Descriptions_For_WooComerce\FrontEnd\FrontEnd;
-use AI_Descriptions_For_WooComerce\Business\Email_Reports;
-use AI_Descriptions_For_WooComerce\Admin\Mark_Spam;
+use AIDFW_Plugin\Admin\Admin;
+use AIDFW_Plugin\Admin\Admin_Settings;
+use AIDFW_Plugin\Business\Purge;
+use AIDFW_Plugin\Core\Process_Spam_Checks;
+use AIDFW_Plugin\Core\Utilities;
+use AIDFW_Plugin\Data\Log;
+use AIDFW_Plugin\FrontEnd\FrontEnd;
+use AIDFW_Plugin\Business\Email_Reports;
+use AIDFW_Plugin\Admin\Mark_Spam;
 
 /**
  * Class Core
- * @package AI_Descriptions_For_WooComerce\Control
+ * @package AIDFW_Plugin\Control
  */
 class Core {
 	/**
@@ -58,7 +58,7 @@ class Core {
 
 	public function __construct(  ) {
 		$this->plugin_name = 'ai-descriptions-for-woocommerce';
-		$this->version     = AI_DESCRIPTIONS_FOR_WOOCOMMERCE_PLUGIN_VERSION;
+		$this->version     = AIDFW_PLUGIN_VERSION;
 		$this->utilities   = new Utilities();
 
 	}
@@ -136,7 +136,7 @@ class Core {
 		load_plugin_textdomain(
 			'ai-descriptions-for-woocommerce',
 			false,
-			AI_DESCRIPTIONS_FOR_WOOCOMMERCE_PLUGIN_DIR . 'languages/'
+			AIDFW_PLUGIN_DIR . 'languages/'
 		);
 	}
 }

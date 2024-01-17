@@ -1,7 +1,7 @@
 <?php
 /**
- * @copyright (c) 2019.
- * @author            Alan Fuller (support@fullworks)
+ * @copyright (c) 2024.
+ * @author            Alan Fuller (support@fullworksplugins.com)
  * @licence           GPL V3 https://www.gnu.org/licenses/gpl-3.0.en.html
  * @link                  https://fullworks.net
  *
@@ -23,39 +23,18 @@
  *
  */
 
-namespace AI_Descriptions_For_WooComerce\Control;
+namespace AIDFW_Plugin\Control;
 
-use AI_Descriptions_For_WooComerce\Core\Utilities;
+use AIDFW_Plugin\Core\Utilities;
 
 /**
  * Class Activator
- * @package AI_Descriptions_For_WooComerce\Control
+ * @package AIDFW_Plugin\Control
  */
 class Activator {
-
 	/**
 	 * @param $network_wide
 	 */
 	public static function activate( $network_wide ) {
 	}
-
-	/**
-	 *
-	 */
-	public static function create_tables() {
-
-	}
-
-	/**
-	 * @param $blog_id
-	 * @param $user_id
-	 * @param $domain
-	 * @param $path
-	 * @param $site_id
-	 * @param $meta
-	 */
-	public static function on_create_blog_tables( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
-
-	}
-
 }
