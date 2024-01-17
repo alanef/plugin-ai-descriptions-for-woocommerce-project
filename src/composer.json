@@ -28,7 +28,7 @@
   "require": {
     "php": ">=7.4",
     "composer/installers": "v1.0.12",
-    "orhanerday/open-ai": "^3.2",
+    "orhanerday/open-ai": "*",
     "ext-json": "*"
   }
 }

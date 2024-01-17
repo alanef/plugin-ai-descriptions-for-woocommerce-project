@@ -60,13 +60,23 @@ class Admin {
 		}
 		$options  = get_option( 'ai-descriptions-for-woocommerce' );
 		$openai   = new Openai( $options['openai_api_key'] );
-		$complete = $openai->completion(
+		$complete = $openai->chat(
 			array(
-				'model'       => 'text-davinci-003',
-				'prompt'      => 'write a long product description based on this product name - ' . $product->get_name() . '\n\n###\n\n',
-				'max_tokens'  => 1000,
+				'model'       => 'gpt-3.5-turbo',
+				'messages' => [
+					[
+						"role" => "system",
+						"content" => "You are and experienced product description writer"
+					],
+					[
+						"role" => "user",
+						"content" => "Please write a description for this product: here is the title: " . $product->get_name()
+					],
+				],
+				'max_tokens'  => 4000,
 				'temperature' => 0.8,
-				'n'           => 2,
+				'frequency_penalty' => 0,
+				'presence_penalty' => 0,
 			)
 		);
 		$data     = json_decode( $complete );
@@ -77,10 +87,32 @@ class Admin {
 		// update woocommerce description data
 		$desc = '';
 		foreach ( $data->choices as $choice ) {
-			$desc .= $choice->text;
-			if ( next( $data->choices ) ) {
-				$desc .= '<p>-------------ALTERNATIVES ----------------</p>';
-			}
+			$desc .= $choice->message->content;
+		}
+		$complete = $openai->chat(
+			array(
+				'model'       => 'gpt-3.5-turbo',
+				'messages' => [
+					[
+						"role" => "user",
+						"content" => "Please be creative and write an alternative product description, add a bullet list of features and benefits for " .$product->get_name()
+					],
+				],
+				'max_tokens'  => 4000,
+				'temperature' => 0.8,
+				'frequency_penalty' => 0,
+				'presence_penalty' => 0,
+			)
+		);
+		$data     = json_decode( $complete );
+		if ( property_exists( $data, 'error' ) ) {
+			// handle error
+			return;
+		}
+		// update woocommerce description data
+		$desc .= '<p>============Alternative description=============</p>';
+		foreach ( $data->choices as $choice ) {
+			$desc .= $choice->message->content;
 		}
 		$product->set_description( $desc );
 	}

@@ -23,18 +23,14 @@
  *
  */
 
-
 namespace AIDFW_Plugin\Admin;
 
 use AIDFW_Plugin\Core\Utilities;
 
 class Admin_Settings extends Admin_Pages {
-
 	protected $settings_page;
 	protected $settings_page_id = 'settings_page_ai-descriptions-for-woocommerce-settings';
 	protected $option_group = 'ai-descriptions-for-woocommerce';
-	/** @var Utilities $utilities */
-	protected $utilities;
 	protected $options;
 
 	private $titles;
@@ -46,10 +42,7 @@ class Admin_Settings extends Admin_Pages {
 	 * @param string $version plugin version.
 	 */
 
-	public function __construct( $plugin_name, $version, $utilities ) {
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
-		$this->utilities   = $utilities;
+	public function __construct( ) {
 		$this->titles      = array(
 			'API Key' => array(
 				'title' => esc_html__( 'OpenAI API Key', 'ai-descriptions-for-woocommerce' ),
@@ -65,7 +58,6 @@ class Admin_Settings extends Admin_Pages {
 	}
 
 	public static function option_defaults( $option ) {
-		global $fwantispam_fs;
 		switch ( $option ) {
 			case 'ai-descriptions-for-woocommerce':
 				$res = array(
