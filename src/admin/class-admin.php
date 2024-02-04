@@ -50,10 +50,6 @@ class Admin {
 		wp_enqueue_style( AIDFW_PLUGIN_BASENAME, plugin_dir_url( __FILE__ ) . 'css/admin.css', array(), AIDFW_PLUGIN_VERSION, 'all' );
 	}
 
-	public function enqueue_scripts() {
-		wp_enqueue_script( AIDFW_PLUGIN_BASENAME, plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), AIDFW_PLUGIN_VERSION, false );
-	}
-
 	public function on_product_save( $product ) {
 		if ( ! empty( $product->get_description() ) ) {
 			return;

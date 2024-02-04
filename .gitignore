@@ -1,6 +1,5 @@
 .idea/
 dist/
-zipped/
 node_modules/
 src/vendor/
 src/includes/vendor/

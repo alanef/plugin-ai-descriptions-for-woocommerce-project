@@ -22,7 +22,7 @@
  *
  *
  */
-
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Autoloader based on tutorial by
  * Tom McFarlin https://tommcfarlin.com/  Licensed    GPL-2.0+

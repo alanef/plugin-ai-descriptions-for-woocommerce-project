@@ -77,8 +77,6 @@ class Admin_Pages {
 		if ( ! empty( $this->settings_page ) ) {
 			/* Load the JavaScript needed for the settings screen. */
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-			add_action( "admin_footer-{$page_hook_id}", array( $this, 'footer_scripts' ) );
-			/* Set number of column available. */
 			add_filter( 'screen_layout_columns', array( $this, 'screen_layout_column' ), 10, 2 );
 			add_action( $this->settings_page_id . '_settings_page_boxes', array( $this, 'add_required_meta_boxes' ) );
 		}
@@ -94,32 +92,26 @@ class Admin_Pages {
 			wp_enqueue_script( 'common' );
 			wp_enqueue_script( 'wp-lists' );
 			wp_enqueue_script( 'postbox' );
+			$page_hook_id = $this->settings_page_id;
+			$confirm_text = esc_html__( 'Are you sure want to do this?', 'ai-descriptions-for-woocommerce' );
+
+			$inline_script = <<<EOD
+jQuery(document).ready(function ($) {
+    $('.if-js-closed').removeClass('if-js-closed').addClass('closed');
+    postboxes.add_postbox_toggles('{$page_hook_id}');
+    $('#fx-smb-form').submit(function() {
+        $('#publishing-action .spinner').css('visibility', 'visible');
+    });
+    $('#delete-action *').on('click', function() {
+        return confirm('{$confirm_text}');
+    });
+});
+EOD;
+
+			wp_add_inline_script( 'common', $inline_script );
 		}
 	}
 
-	public function footer_scripts() {
-		$page_hook_id = $this->settings_page_id;
-		//@ TODO think about localize and enqueue
-		?>
-        <script type="text/javascript">
-            //<![CDATA[
-            jQuery(document).ready(function ($) {
-                // toggle
-                $('.if-js-closed').removeClass('if-js-closed').addClass('closed');
-                postboxes.add_postbox_toggles('<?php echo esc_attr( $page_hook_id ); ?>');
-                // display spinner
-                $('#fx-smb-form').submit(function () {
-                    $('#publishing-action .spinner').css('visibility', 'visible');
-                });
-// confirm before reset
-                $('#delete-action *').on('click', function () {
-                    return confirm('<?php esc_html_e( 'Are you sure want to do this?', 'ai-descriptions-for-woocommerce' ); ?>');
-                });
-            });
-            //]]>
-        </script>
-		<?php
-	}
 
 	public function screen_layout_column( $columns, $screen ) {
 		$page_hook_id = $this->settings_page_id;
@@ -143,9 +135,6 @@ class Admin_Pages {
             <div class="wrap fs-page">
 
                 <h2 class="brand"><?php echo wp_kses_post( $this->settings_title ); ?></h2>
-
-				<?php settings_errors(); ?>
-
 
                 <div class="fs-settings-meta-box-wrap">
 
@@ -195,6 +184,33 @@ class Admin_Pages {
 			<?php
 		}
 
+	}
+
+	public function display_tabs() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No action, nonce is not required
+		$page      = sanitize_text_field( wp_unslash( $_GET['page'] ?? '' ) );
+		$split     = explode( '-', $page );
+		$page_type = $split[ count( $split ) - 1 ];
+		$tabs      = Utilities::get_instance()->get_settings_page_tabs( $page_type );
+		if ( count( $tabs ) < 1 ) {
+			return;
+		}
+		?>
+        <h2 class="nav-tab-wrapper">
+			<?php
+			foreach ( $tabs as $tab ) {
+				$active = '';
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No action, nonce is not required these are tabs within admin settings
+				if ( preg_match( '#' . $page . '$#', $tab['href'] ) ) {
+					$active = ' nav-tab-active';
+				}
+				echo '<a href="' . esc_url( $tab['href'] ) . '" class="nav-tab' . esc_attr( $active ) . '">' . esc_html( $tab['title'] ) . '</a>';
+			}
+			?>
+
+
+        </h2>
+		<?php
 	}
 
 	public function add_required_meta_boxes() {
@@ -255,32 +271,5 @@ class Admin_Pages {
 
 	public function delete_options() {
 		// for extended class to manage
-	}
-
-	public function display_tabs() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No action, nonce is not required
-		$page      = sanitize_text_field( wp_unslash( $_GET['page'] ?? '' ) );
-		$split     = explode( '-', $page );
-		$page_type = $split[ count( $split ) - 1 ];
-		$tabs      = Utilities::get_instance()->get_settings_page_tabs( $page_type );
-		if ( count( $tabs ) < 1 ) {
-			return;
-		}
-		?>
-        <h2 class="nav-tab-wrapper">
-			<?php
-			foreach ( $tabs as $tab ) {
-				$active = '';
-				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- No action, nonce is not required these are tabs within admin settings
-				if ( preg_match( '#' . $page . '$#', $tab['href'] ) ) {
-					$active = ' nav-tab-active';
-				}
-				echo '<a href="' . esc_url( $tab['href'] ) . '" class="nav-tab' . esc_attr( $active ) . '">' . esc_html( $tab['title'] ) . '</a>';
-			}
-			?>
-
-
-        </h2>
-		<?php
 	}
 }

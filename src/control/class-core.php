@@ -29,7 +29,7 @@ use /**
  * @package YourPackageName
  */
 class Core {
-	public function __construct(  ) {
+	public function __construct() {
 	}
 
 	/**
@@ -67,7 +67,5 @@ class Core {
 	private function define_admin_hooks() {
 		$plugin_admin = new Admin();
 		add_action( 'admin_enqueue_scripts', array( $plugin_admin, 'enqueue_styles' ) );
-		add_action( 'woocommerce_before_product_object_save', array( $plugin_admin,'on_product_save'), 10, 1 );
 	}
-
 }
