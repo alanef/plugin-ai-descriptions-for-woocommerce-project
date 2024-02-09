@@ -95,18 +95,16 @@ class Admin_Pages {
 			$page_hook_id = $this->settings_page_id;
 			$confirm_text = esc_html__( 'Are you sure want to do this?', 'ai-descriptions-for-woocommerce' );
 
-			$inline_script = <<<EOD
-jQuery(document).ready(function ($) {
+			$inline_script = "jQuery(document).ready(function ($) {
     $('.if-js-closed').removeClass('if-js-closed').addClass('closed');
-    postboxes.add_postbox_toggles('{$page_hook_id}');
+    postboxes.add_postbox_toggles('" . esc_html( $page_hook_id ) . "');
     $('#fx-smb-form').submit(function() {
         $('#publishing-action .spinner').css('visibility', 'visible');
     });
     $('#delete-action *').on('click', function() {
-        return confirm('{$confirm_text}');
+        return confirm('" . esc_html( $confirm_text ) . "');
     });
-});
-EOD;
+});";
 
 			wp_add_inline_script( 'common', $inline_script );
 		}
