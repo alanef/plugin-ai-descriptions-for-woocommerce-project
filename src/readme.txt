@@ -1,4 +1,4 @@
-=== AI description for woocommerce ===
+=== AI Descriptions for WooCommerce ===
 Contributors: Fullworks
 Tags: woocommerce, openai
 Tested up to: 6.4
